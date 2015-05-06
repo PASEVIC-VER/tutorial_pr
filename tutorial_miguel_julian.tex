@@ -1,0 +1,163 @@
+\documentclass[11pt,letterpaper]{thesis}
+\usepackage[top=2.5cm,bottom=2.5cm,left=3.5cm,right=2.5cm]{geometry}
+\linespread{1.3}
+\setlength{\parindent}{0pt}
+\usepackage[utf8]{inputenc}
+\usepackage{epigraph}
+\usepackage[latin1]{inputenc}
+\usepackage[spanish,mexico]{babel}
+%\usepackage[french,france]{babel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{textcomp}
+\usepackage{subfigure}
+%\usepackage{t4phonet}
+%\usepackage{eufrak}
+\usepackage{amsfonts}
+\usepackage{enumerate}
+\usepackage{amssymb}
+\usepackage{afterpage}
+\usepackage{appendix}
+\usepackage[pdftex]{graphicx}
+%\usepackage{algorithmic}
+\usepackage{makeidx}
+\usepackage{natbib}
+\usepackage{algorithmic}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{graphics}
+\usepackage[nottoc,numbib]{tocbibind}
+\usepackage{xcolor}
+%\usepackage[small,nohug,heads=vee]{diagrams}%
+%\diagramstyle[labelstyle=\scriptstyle]
+
+% transpose
+\newcommand{\langl}{\begin{picture}(4.5,7)
+\put(1.1,2.5){\rotatebox{60}{\line(1,0){5.5}}}
+\put(1.1,2.5){\rotatebox{300}{\line(1,0){5.5}}}
+\end{picture}}
+\newcommand{\rangl}{\begin{picture}(4.5,7)
+\put(.9,2.5){\rotatebox{120}{\line(1,0){5.5}}}
+\put(.9,2.5){\rotatebox{240}{\line(1,0){5.5}}}
+\end{picture}}
+
+\newcommand{\lang}{\begin{picture}(5,7)
+\put(1.1,2.5){\rotatebox{45}{\line(1,0){6.0}}}
+\put(1.1,2.5){\rotatebox{315}{\line(1,0){6.0}}}
+\end{picture}}
+\newcommand{\rang}{\begin{picture}(5,7)
+\put(.1,2.5){\rotatebox{135}{\line(1,0){6.0}}}
+\put(.1,2.5){\rotatebox{225}{\line(1,0){6.0}}}
+\end{picture}} 
+
+% partial derivative
+\newcommand{\pder}[2][]{\frac{\partial#1}{\partial#2}}
+
+% approx. distributed
+\newcommand*{\approxdist}{\mathrel{\vcenter{\offinterlineskip
+\vskip-.25ex\hbox{\hskip.55ex$\cdot$}\vskip-.25ex\hbox{$\sim$}
+\vskip-.5ex\hbox{\hskip.55ex$\cdot$}}}}
+
+\setlength\fboxsep{0pt}
+\setlength\fboxrule{0.5pt} 	
+\providecommand{\abs}[1]{\left\lvert#1\right\rvert}
+\providecommand{\norm}[1]{\left\lVert#1\right\rVert}
+\providecommand{\Real}[1]{\mathfrak{Re}\left(#1\right)}
+\providecommand{\Imag}[1]{\mathfrak{Im}\left(#1\right)}
+
+% internal product
+\newcommand{\langl}{\begin{picture}(4.5,7)
+\put(1.1,2.5){\rotatebox{60}{\line(1,0){5.5}}}
+\put(1.1,2.5){\rotatebox{300}{\line(1,0){5.5}}}
+\end{picture}}
+\newcommand{\rangl}{\begin{picture}(4.5,7)
+\put(.9,2.5){\rotatebox{120}{\line(1,0){5.5}}}
+\put(.9,2.5){\rotatebox{240}{\line(1,0){5.5}}}
+\end{picture}}
+
+
+
+\theoremstyle{definition} \newtheorem{definition}{Definición}[section]
+\theoremstyle{plain} \newtheorem{theorem}{Teorema}[section]
+\theoremstyle{plain} \newtheorem{lemma}{Lema}[section]
+\theoremstyle{plain} \newtheorem{proposition}[theorem]{Proposici\'on}
+\theoremstyle{plain} \newtheorem{corollary}[theorem]{Corolario}
+\theoremstyle{plain} \newtheorem{remark}[theorem]{Comentario}
+\newenvironment{example}[1][Ejemplo]{\begin{trivlist}\item[\hskip 
+\labelsep {\bfseries #1}]}{\end{trivlist}}
+
+
+
+\makeindex
+
+\setlength{\parindent}{11pt}
+
+\author{Miguel Equihua y Julián Equihua}
+\title{Reportes}
+
+\begin{document}
+
+
+\begin{titlepage}
+%titlepage
+\thispagestyle{empty}
+
+		
+
+%University logo
+   
+	 \begin{flushleft}
+		\includegraphics[width=4in]{0_logo_conabio.png}
+	 \end{flushleft}
+	
+	\begin{center}
+	
+    %\rule{0.4\linewidth}{0.15\linewidth}\par
+	
+	
+    \vspace{3cm}
+	
+	\\	
+%Thesis title
+    {\uppercase{\Large Descarga y exploraci\'on de productos satelitales
+ \par}}
+    \vspace{3cm}
+
+%Author's name
+    {\Large Miguel Equihua, Juli\'an Equihua }
+    \vspace{3cm}
+		\\
+		\\
+%Degree
+    {\Large Tutorial\par}
+    \vspace{3cm}
+%Date
+    {\Large \par}
+		\\
+		\\
+		{\Small 09/04/2015}
+
+\end{center}
+
+\clearpage
+
+
+\end{titlepage}
+
+\frontmatter
+\include{titulo} 
+
+
+\tableofcontents
+\newpage
+
+\mainmatter
+\chapter{Primeros pasos}
+\input{capitulo1}
+\chapter{Im\'agenes satelitales}
+\input{capitulo2}
+
+%\chapter{Tareas a realizar}
+%\input{capitulo2}
+
+\end{document}

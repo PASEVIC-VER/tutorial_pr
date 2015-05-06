@@ -1,0 +1,168 @@
+\section{Adquisición de imágenes}
+
+En esta sección se darán instrucciones paso a paso sobre cómo obtener imágenes de los sensores MODIS y de las misiones Landsat. Hay múltiples maneras de conseguirlas desde utilizando portales web con interfases gráficas para este propísito hasta programando una conexión directa con los espacios de almacenamiento (File Transfer Protocol, FTPs) donde están albergadas las imágenes. Por ejemplo en servidores de la NASA. Se debe hacer hincapié en que, aunque está sujeto al objetivo del estudio, obtener imágenes satelitales puede ser una tarea ardua por la cantidad de datos que esto implica. 
+
+\subsection{Landsat}
+
+La manera más común en que se puede acceder a la colección completa de Landsat es en la plataforma EarthExplorer, puede hacer click en el siguiente link para entrar a esta plataforma: 
+
+\\
+\begin{center}
+\url{<http://earthexplorer.usgs.gov/>}
+\end{center}
+\\
+
+\\
+
+\begin{figure}[h!]
+\begin{center}
+\leavevmode
+\includegraphics[width=6in]{5_earthexplorer.png}
+\end{center}
+\caption{Pantalla principal del portal EarthExplorer}
+\end{figure}
+
+\\
+
+Primero debes de crear una cuenta en el portal. Sólo así podrás solicitar datos Landsat. Una vez que has llevado a cabo el proceso de registro podrás entrar a la plataforma con tus credenciales (nombre de usuario//contraseña). Cada imagen Landsat se encuentra sobre una cuadrícula que cubre al mundo. Cada uno de estos cuadros se llaman "`escenas"' y en ellas se encuentra toda una historia de adquisiciones de imágenes Landsat. Por ejemplo, en la figura 2.2 se muestra la cantidad de imágenes por escena para México tomadas en el año 2000.
+
+\\
+
+\begin{figure}[h!]
+\begin{center}
+\leavevmode
+\includegraphics[width=5in]{6_escenas_landsat.png}
+\end{center}
+\caption{Imágenes por escena, año 2000}
+\end{figure}
+
+\\
+
+Como se podrá observar, Landsat es uno de los múltiples conjuntos de datos que se pueden obtener en esta plataforma. También se ve que existen muchísimas maneras para hacer búsquedas en las colecciones para seleccionar los datos que cumplan con las características deseadas (localización espacial, fechas de adquisición, etc). Para generar una orden de datos puedes, por poner un ejemplo, subir una lista de escenas. Esta lista es un simple archivo de texto con un ID de esecna por renglón(eg: LT52302701999134). También puedes seleccionar una región utilizando el "`Search Criteria"' y utilizando la opción "`coordinates"' (figura 2.3). Se puede sencillamente mover los extremos de la región de interés en el mapa utilizando el mouse, por ejemplo envolviendo al estado de Veracruz.\\
+
+Una vez elegida la región de interés de una manera u otra se debe de seleccionar las colecciones que se van a ubicar en tal región. Esto se hace utilizando la pestaña de "`Data sets"'. Por ejemplo si buscamos imágenes de la colección \textit{L7 ETM+ SLC-on (1999-2003)} obtenemos una lista de imágenes encontradas con tales características. Incluso se pueden visualizar en el mapa mismo apretando el ícono de visualización (figura 2.4). 
+
+\newpage
+
+\\
+
+\begin{figure}[h!]
+\begin{center}
+\leavevmode
+\includegraphics[width=6in]{7_veracruz.png}
+\end{center}
+\caption{Región de interés: Veracruz}
+\end{figure}
+
+\\
+
+
+
+\\
+
+\begin{figure}[h!]
+\begin{center}
+\leavevmode
+\includegraphics[width=6in]{8_overlay.png}
+\end{center}
+\caption{Imagen Landsat sobre Veracruz}
+\end{figure}
+
+\\
+
+Ahora se debe pedir que la orden se pre-procese. Una vez que esto se lleva a cabo se recibirá un correo por parte de ESPA notificando que esto se realizacó con éxito y se podrá proceder a descargar la información. Como ya se mencionó, esto puede ser una tarea pesada por lo que se recomienda utilizar un manejador de descargas por ejemplo:
+
+\begin{itemize}
+	\item El Bulk Download Application (el manual será incluído con este tutorial)
+	\item El complemento DownloadThemAll para firefox
+\end{itemize}
+
+\newpage
+
+\subsection{MODIS}
+
+Los servidores de la NASA donde se albergan los productos MODIS están abiertos. Incluso se podría bajar los datos manualmente:
+
+\\
+\begin{center}
+\url{<http://e4ftl01.cr.usgs.gov/MOLT/>}
+\end{center}
+\\
+
+Esto naturalmente resulta bastante confuso. Hay que entender varias cosas antes de adquirir imágenes MODIS. Primero, se procesan y ofrecen una gran cantidad de productos MODIS. En el siguiente link se puede revisar una tabla con cada uno de los productos disponibles:
+
+\\
+\begin{center}
+\url{<https://lpdaac.usgs.gov/products/modis_products_table>}
+\end{center}
+\\
+
+Cada uno tiene una respectiva clave ("`Short Name"'), en la tabla también se encuentran características básicas de los productos, la resolución temporal (periodicidad con la que existen, la resolución espacial, etc). Para más detalles se puede hacer click en los "`Short name"' y se accederá a una página con información técnica detallada del producto en cuestión. \\
+
+Una vez elegido el producto se debe decidir qué imágenes se quieren obtener. Como sucede con Landsat, las imágenes MODIS también se encuentran sobre una cuadrícula sobre el mundo. Esta cuadrícula viene descrita por coordenadas horizontales y verticales (figura 2.5). 
+
+\\
+\begin{figure}[h!]
+\begin{center}
+\leavevmode
+\includegraphics[width=4in]{9_modis_cuadricula.png}
+\end{center}
+\caption{Escenas MODIS}
+\end{figure}
+\\
+
+Como con base en este mapa puede resultar muy difícil encontrar las coordenadas horizontales y verticales para regiones de interés, por ejemplo el estado de Veracruz, se incluye un archivo KMZ que se puede abrir en google earth para explorar las escenas MODIS con facilidad: MODISescenas.kmz . \\
+
+Una vez encontradas las coorenadas horizontales y verticales de las escenas MODIS que incluyen a la región de interés estamos listos para adquirir las imágenes. Para este propósito se utilizará el languaje de programación R. Utilizando este lenguaje nos conectaremos diréctamente a los servidores de la NASA para luego bajar los archivos deseados.\\
+
+Se requieren los siguientes \textbf{paquetes de R}:
+\\ 
+
+\begin{itemize}
+	\item sp
+	\item raster
+	\item rgdal
+	\item RCurl
+	\item mail
+	\item lubridate
+	\item mapdata
+	\item rgeos
+	\item MODIS 
+	
+\end{itemize}
+
+El paquete MODIS se debe obtener se puede bajar e instalar directamente de un zip o utilizar el commando indicado, figura 2.6.
+
+\\
+\begin{figure}[h!]
+\begin{center}
+\leavevmode
+\includegraphics[width=6in]{10_modispackage.png}
+\end{center}
+\caption{Paquete de R: MODIS}
+\end{figure}
+\\
+
+Otros requerimientos son:
+\\
+
+\textbf{Modis reprojection tool}: \url{<https://lpdaac.usgs.gov/tools/modis_reprojection_tool>}
+\\
+\begin{enumerate}
+	\item 1.	Si ya se tenía instalado, quitar por complete el folder viejo MRT. Luego ir a System $\rightarrow$ Advanced $\rightarrow$ Environment Variables, y borrar todas las variables relacionadas con MRT de la ventana superior. 
+	\item 2. Instalar/reinstalar MRT. Asegurarse que este se instala en c:\textbackslash{}Modis. 
+	\item 3. Después de la instalación, ir nuevamente a las Environment Variables y en la ventana sueperior editar las tres entradas: 
+	
+	\begin{itemize}
+		\item MRTDATADIR  c:\textbackslash{}Modis\textbackslash{}data 
+		\item MRT$_$HOME    c:\textbackslash{}Modis 
+		\item PATH        c: \textbackslash{}Modis\textbackslash{}bin 
+
+	\end{itemize}
+\end{enumerate}
+\\
+
+\textbf{Java}: \url{<https://www.java.com/es/download/>}\\
+\\
+
+Una vez que se tienen todos los requisitos se utiliza el script: bajarmodis.R donde deben elegir todos los parámetros de la descarga. Coordenadas de las escenas, producto a bajar, remuestreo, reproyección, etc de la información MODIS. El script viene comentado pero se debe leer con cuidado para bajar exactamente lo que se desea. Esto es, se debe elegir bien el producto y las fechas deseadas. Por otra parte se deben elegir bien las paths de salida de los productos procesados. También el tamaño correspondiente al producto, línea 105. 

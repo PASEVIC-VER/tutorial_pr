@@ -1,0 +1,8 @@
+\select@language {spanish}
+\contentsline {chapter}{\numberline {1.}Primeros pasos}{1}
+\contentsline {section}{\numberline {1.1}Introducci\IeC {\'o}n}{1}
+\contentsline {section}{\numberline {1.2}\IeC {\textquestiondown }Por qu\IeC {\'e} im\IeC {\'a}genes satelitales?}{3}
+\contentsline {chapter}{\numberline {2.}Im\'agenes satelitales}{5}
+\contentsline {section}{\numberline {2.1}Adquisici\IeC {\'o}n de im\IeC {\'a}genes}{5}
+\contentsline {subsection}{\numberline {2.1.1}Landsat}{5}
+\contentsline {subsection}{\numberline {2.1.2}MODIS}{8}
